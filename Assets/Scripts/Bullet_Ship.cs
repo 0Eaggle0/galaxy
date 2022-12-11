@@ -15,7 +15,7 @@ public class Bullet_Ship : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y + speed_bullet, 0);
         if (!ScreenUtils.isPosition_on_screen(transform.position)){

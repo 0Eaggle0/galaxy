@@ -16,10 +16,10 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if (cur_enemyGroop.isDestroyed == true){
+        if (cur_enemyGroop != null && cur_enemyGroop.isDestroyed == true){
             Destroy(cur_enemyGroop.gameObject);
             if (Groupscount == 5){
-                SceneManager.LoadSceneAsync(1);
+                SceneManager.LoadSceneAsync(SceneIds.win_scene_id);
             }
             else{
                 Create_newGroup();  
