@@ -14,4 +14,8 @@ public class WInScreenManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneIds.level_scene_id);
     }
+
+    public void Return_to_map(){
+        SceneManager.LoadSceneAsync(SceneIds.map_scene_id);
+    } 
 }
