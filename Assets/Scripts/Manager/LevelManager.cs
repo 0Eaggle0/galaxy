@@ -6,32 +6,41 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public GameObject firstGroupOriginal;
-    private FirstEnemyGroop cur_enemyGroop;
-    private int Groupscount = 0;
+    public GameObject ramGroupOriginal;
+    private BaseAllEnemyGroop cur_enemyGroop;
+    private int groupsCount = 0;
+    private EnemyGroupType[] groupTypes = {EnemyGroupType.base_group, EnemyGroupType.ram_group};
     void Start()
     {
         Create_newGroup();
-        Groupscount ++;
+        groupsCount ++;
     }
 
     void Update()
     {
         if (cur_enemyGroop != null && cur_enemyGroop.isDestroyed == true){
             Destroy(cur_enemyGroop.gameObject);
-            if (Groupscount == 5){
+            if (groupsCount == groupTypes.Length){
                 SceneManager.LoadSceneAsync(SceneIds.win_scene_id);
             }
             else{
                 Create_newGroup();  
-                Groupscount ++;
+                groupsCount ++;
             }
         }
     }
 
     void Create_newGroup()
     {
-        GameObject new_Enemy_Group = Instantiate(firstGroupOriginal);
-        new_Enemy_Group.transform.position = transform.position;
-        cur_enemyGroop = new_Enemy_Group.GetComponent<FirstEnemyGroop>();
+        if (groupTypes[groupsCount] == EnemyGroupType.base_group){
+            GameObject new_Enemy_Group = Instantiate(firstGroupOriginal);
+            new_Enemy_Group.transform.position = transform.position;
+            cur_enemyGroop = new_Enemy_Group.GetComponent<FirstEnemyGroop>();
+        } 
+        else if (groupTypes[groupsCount] == EnemyGroupType.ram_group){
+            GameObject new_Enemy_Group = Instantiate(ramGroupOriginal);
+            new_Enemy_Group.transform.position = transform.position;
+            cur_enemyGroop = new_Enemy_Group.GetComponent<RamEnemyGroup>();
+        }
     }
 }
