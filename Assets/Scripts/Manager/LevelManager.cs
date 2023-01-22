@@ -9,7 +9,8 @@ public class LevelManager : MonoBehaviour
     public GameObject ramGroupOriginal;
     private BaseAllEnemyGroop cur_enemyGroop;
     private int groupsCount = 0;
-    private EnemyGroupType[] groupTypes = {EnemyGroupType.base_group, EnemyGroupType.ram_group};
+    private EnemyGroupType[] groupTypes = {EnemyGroupType.base_group, EnemyGroupType.ram_group, EnemyGroupType.base_group,
+                                            EnemyGroupType.ram_group, EnemyGroupType.base_group};
     void Start()
     {
         Create_newGroup();

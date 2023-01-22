@@ -104,7 +104,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.3911765, y: 2.2588236}
+    oldSize: {x: 2.4636364, y: 2.3272727}
     newSize: {x: 2.0325, y: 1.92}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -229,3 +229,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01fd410026912ec47b735f62868bc050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0
+  shipRenderer: {fileID: 3278282649592505174}

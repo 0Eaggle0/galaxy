@@ -38,6 +38,24 @@ public class SpaceShip : MonoBehaviour
             }
         }
 
+        bool  isKeyUp  = Input.GetKey(KeyCode.W);
+        if (isKeyUp == true){
+            Vector3 new_position = new Vector3(transform.position.x, transform.position.y + (speed / 2), 0);
+            Vector3 check_position = new Vector3(new_position.x, new_position.y + half_height, 0);
+            if (ScreenUtils.isPosition_on_screen(check_position) == true){
+                transform.position = new_position;
+            }
+        }
+
+        bool  isKeyDown  = Input.GetKey(KeyCode.S);
+        if (isKeyDown == true){
+            Vector3 new_position = new Vector3(transform.position.x, transform.position.y - (speed / 2), 0);
+            Vector3 check_position = new Vector3(new_position.x, new_position.y - half_height, 0);
+            if (ScreenUtils.isPosition_on_screen(check_position) == true){
+                transform.position = new_position;
+            }
+        }
+
         bool  isKeyShoot  = Input.GetKeyDown(KeyCode.Space);
         if (isKeyShoot == true){
             GameObject bulletClon = Instantiate(clon_bullet);
@@ -56,6 +74,13 @@ public class SpaceShip : MonoBehaviour
                 Destroy(gameObject);    
             }
             Destroy(otherObject);
+        } else{
+            RamEnemyShip shipScript = otherObject.GetComponent<RamEnemyShip>();
+            if (shipScript != null){
+                Destroy(otherObject);
+                SceneManager.LoadSceneAsync(SceneIds.lose_scene_id);
+                Destroy(gameObject);    
+            }
         }
     }
 }
